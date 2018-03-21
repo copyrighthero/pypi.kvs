@@ -1,9 +1,9 @@
 # Author: Hansheng Zhao <copyrighthero@gmail.com> (https://www.zhs.me)
 
 try:
-  from dbm import gnu as dbm
+  import anydbm as dbm
 except ImportError:
-  from dbm import dumb as dbm
+  import dbm
 
 
 # import directive
