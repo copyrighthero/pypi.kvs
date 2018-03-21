@@ -119,7 +119,7 @@ class KVS(object):
     """
     database = self._database
     key = self._convert(key)
-    return key in  database \
+    return key in database \
       if hasattr(database, '__contains__') \
       else self.__getitem__(key) is not None
 
@@ -140,9 +140,12 @@ class KVS(object):
       # serialize and compress the value
       value = self._serialize.dumps(value)
       # set item into database
-      database.set(key, value, *args, **kwargs) \
-        if hasattr(database, 'set') \
-        else database.__setitem__(key, value)
+      if hasattr(database, 'set'):
+        database.set(key, value, *args, **kwargs)
+      elif hasattr(database, 'put'):
+        database.put(key, value, *args, **kwargs)
+      else:
+        database.__setitem__(key, value)
     else:
       # delete item from database instead
       self.__delitem__(key, *args, **kwargs)
