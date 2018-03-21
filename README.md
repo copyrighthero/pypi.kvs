@@ -100,21 +100,21 @@ Signature: `KVS(database = ':memory:', serialize = None, **kwargs)`
 
 2. `serialize` parameter: if nothing is passed in, the class will use `SeCo` library for data serialization and compression. If any other instance passed in, eg.: `pickle`, `msgpack` etc, it will use it as the serializer. Remember that most databases like `redis`, `memcached` or `leveldb|plyvel` stores only `bytes` objects, keep it in mind when choosing serializers. 
 
-`__contains__`: implements the `in` operator.
-`__setitem__`, `set`, `put` method: for setting items.
-`__getitem__`, `get` method: for getting items.
-`__call__`: get or set item depends on how many parameters passed in
-`__delete__`, `delete` method: for deleting items.
-`__setattr__`: almost the alias for `__setitem__`, like `set` or `put` method.
-`__getattr__`: for getting attributes from database instance, if not found, attempts `__getitem__` on `self`.
-`__delattr__`: almost the alias for `__delitem__`, like `delete` method.
-`pop(key)`: pop an item from storage
-`keys()`: keys iterator if possible. eg. not possible with `memcached`.
-`values()`: values iterator if possible. Same reason.
-`items()`: items iterator if possible. Same reason.
-`sync()`: only available to databases with `sync` method, like `dbm` etc, otherwise noop.
-`close()`: only avalable to databases with `close` method, like `plyvel` etc, otherwise noop.
-`clear()`: will invoke database's `clear` or `flush_all`, `flushall` methods to clear the content.
+- `__contains__`: implements the `in` operator.
+- `__setitem__`, `set`, `put` method: for setting items.
+- `__getitem__`, `get` method: for getting items.
+- `__call__`: get or set item depends on how many parameters passed in
+- `__delete__`, `delete` method: for deleting items.
+- `__setattr__`: almost the alias for `__setitem__`, like `set` or `put` method.
+- `__getattr__`: for getting attributes from database instance, if not found, attempts `__getitem__` on `self`.
+- `__delattr__`: almost the alias for `__delitem__`, like `delete` method.
+- `pop(key)`: pop an item from storage
+- `keys()`: keys iterator if possible. eg. not possible with `memcached`.
+- `values()`: values iterator if possible. Same reason.
+- `items()`: items iterator if possible. Same reason.
+- `sync()`: only available to databases with `sync` method, like `dbm` etc, otherwise noop.
+- `close()`: only avalable to databases with `close` method, like `plyvel` etc, otherwise noop.
+- `clear()`: will invoke database's `clear` or `flush_all`, `flushall` methods to clear the content.
 
 Please refer to the usage for how to use them :-)
 
